@@ -1,0 +1,3 @@
+[submodule "idr-redmine-tracker"]
+	path = idr-redmine-tracker
+	url = https://github.com/openmicroscopy/idr-redmine-tracker.git
