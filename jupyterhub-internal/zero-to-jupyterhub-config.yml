@@ -1,6 +1,5 @@
 hub:
   baseUrl: /jupyterhub-internal/
-  cookieSecret: fd3cfbbfb57fdc354b273519495cc7a0197cf0a943788cfee4e3f48bcb6cf50c
   db:
     type: sqlite-memory
   extraConfig: |
