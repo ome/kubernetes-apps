@@ -1,4 +1,4 @@
-# Instructions for installing applications on the OME Kubernetes cluster
+# Installing applications on the OME Kubernetes cluster
 
 Applications and resource on Kubernetes can be managed in two ways:
 - Individual resources/objects can be managed through Kubernetes manifests. An application will consist of several objects.
@@ -94,4 +94,7 @@ For example, to install a chart run:
 
 - `NAME` is your own name for the deployment, and on a shared cluster should be meaningful to others
 - `CHART/NAME` is the name of the helm chart you are installing
-If you are running version of the same applications you may wish to put it in a separate namespace (e.g. `--namespace=NAME`) to avoid conflicts.
+
+If you are running multiple versions of the same application and it requires access to the Kubernetes API (for instance, to manage additional pods) you should either:
+- Configure it so multiple versions won't conflict
+- Put it in a separate namespace (e.g. `--namespace=NAME`)
