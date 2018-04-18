@@ -1,12 +1,11 @@
 hub:
+  #cookieSecret: secret: openssl rand -hex 32
   baseUrl: /jupyterhub-internal/
   db:
     type: sqlite-memory
-  extraConfig: |
-    # https://github.com/jupyterhub/jupyterhub/wiki/Debug-Jupyterhub
-    c.JupyterHub.log_level = 'DEBUG'
-    c.Spawner.debug = True
-    c.KubeSpawner.singleuser_image_pull_policy = 'Always'
+
+debug:
+  enabled: true
 
 #auth: secret
 
@@ -16,11 +15,11 @@ proxy:
     type: ClusterIP
 
 singleuser:
-  # Must be compatible with JupyterHub 0.8
   image:
-    name: manics/jupyter-docker
-    tag: jupyterhub-0.8
-  startTimeout: 600
+    name: manics/idr-notebooks
+    tag: jupyter-0.8
+    pullPolicy: Always
+  startTimeout: 1800
   memory:
     limit: 1G
     guarantee: 100M
@@ -31,8 +30,6 @@ singleuser:
 # Disable image pre-puller
 prePuller:
   hook:
-    enabled: false
-  continuous:
     enabled: false
 
 ingress:
