@@ -1,0 +1,21 @@
+# These are needed because the repository image tags are invalid, so we need
+# to specify the latest upstream images
+# If https://github.com/jupyterhub/zero-to-jupyterhub-k8s/pull/649 is merged
+# everything should be included in a development release
+# https://jupyterhub.github.io/helm-chart/#development-releases-jupyterhub
+# and this file can be deleted
+
+hub:
+  image:
+    name: manics/k8s-hub
+    tag: ldap
+
+singleuser:
+  networkTools:
+    image:
+      tag: 81c2613
+
+cull:
+  podCuller:
+    image:
+      tag: ce6a47f
