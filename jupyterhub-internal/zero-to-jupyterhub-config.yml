@@ -25,6 +25,7 @@ singleuser:
     guarantee: 100M
   storage:
     type: NONE
+  cmd: jupyter-labhub
   #extraEnv: secret
 
 # Disable image pre-puller
