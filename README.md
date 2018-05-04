@@ -16,6 +16,11 @@ See https://idr.openmicroscopy.org/about/submission.html for more background on 
 An internal deployment of [JupyterHub](https://zero-to-jupyterhub.readthedocs.io/) for testing notebooks.
 
 
+## jupyterhub-training
+An internal deployment of [JupyterHub](https://zero-to-jupyterhub.readthedocs.io/) for testing training notebooks.
+This will be removed when support for multiply notebook images is added to jupyterhub-internal.
+
+
 # Documentation
 - [Deploying applications](docs/deployment.md)
 - [Developing applications](docs/development.md) (Work in progress)
