@@ -16,8 +16,8 @@ proxy:
 
 singleuser:
   image:
-    name: manics/idr-notebooks
-    tag: jupyter-0.8
+    name: snoopycrimecop/idr-notebooks
+    tag: master_merge_trigger
     pullPolicy: Always
   startTimeout: 1800
   memory:
