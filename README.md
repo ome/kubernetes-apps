@@ -18,7 +18,7 @@ An internal deployment of [JupyterHub](https://zero-to-jupyterhub.readthedocs.io
 
 ## jupyterhub-training
 An internal deployment of [JupyterHub](https://zero-to-jupyterhub.readthedocs.io/) for testing training notebooks.
-This will be removed when support for multiply notebook images is added to jupyterhub-internal.
+This will be removed when support for multiple notebook images is added to jupyterhub-internal.
 
 
 # Documentation
