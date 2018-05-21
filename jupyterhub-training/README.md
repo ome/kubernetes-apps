@@ -1,6 +1,6 @@
-# Jupyterhub Internal
+# JupyterHub Training
 
-Internal deployment of Jupyterhub for training
+Internal deployment of JupyterHub for training
 Application URL: https://ome-lochy.openmicroscopy.org/jupyterhub-training/
 
 
@@ -15,7 +15,7 @@ Application URL: https://ome-lochy.openmicroscopy.org/jupyterhub-training/
 
 ## Post-installation
 
-Check if jupyterhub is ready:
+Check if JupyterHub is ready:
 
     kubectl --namespace=jupyter-train get pods
 

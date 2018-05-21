@@ -1,6 +1,6 @@
-# Jupyterhub Internal
+# JupyterHub Internal
 
-Internal deployment of Jupyterhub
+Internal deployment of JupyterHub
 Application URL: https://ome-lochy.openmicroscopy.org/jupyterhub-internal/
 
 
@@ -15,7 +15,7 @@ Application URL: https://ome-lochy.openmicroscopy.org/jupyterhub-internal/
 
 ## Post-installation
 
-Check if jupyterhub is ready:
+Check if JupyterHub is ready:
 
     kubectl --namespace=jupyter-int get pods
 
