@@ -1,0 +1,30 @@
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  path: /grafana-global
+  hosts:
+  - ome-lochy.openmicroscopy.org
+  tls:
+  - hosts:
+    - ome-lochy.openmicroscopy.org
+
+persistence:
+  enabled: true
+  size: 2G
+  existingClaim: grafana-global-storage-nfs-volume
+
+env:
+  GF_AUTH_GITHUB_ENABLED: "true"
+  GF_AUTH_GITHUB_ALLOW_SIGN_UP: "true"
+  #GF_AUTH_GITHUB_CLIENT_ID: # Secret
+  #GF_AUTH_GITHUB_CLIENT_SECRET: # Secret
+  GF_AUTH_GITHUB_SCOPES: user:email,read:org
+  GF_AUTH_GITHUB_AUTH_URL: https://github.com/login/oauth/authorize
+  GF_AUTH_GITHUB_TOKEN_URL: https://github.com/login/oauth/access_token
+  GF_AUTH_GITHUB_API_URL: https://api.github.com/user
+  GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: openmicroscopy
+  GF_SERVER_DOMAIN: ome-lochy.openmicroscopy.org
+  GF_SERVER_ROOT_URL: "https://%(domain)s/grafana-global/"
+  GF_USERS_AUTO_ASSIGN_ORG_ROLE: Viewer
