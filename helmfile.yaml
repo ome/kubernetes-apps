@@ -1,0 +1,25 @@
+releases:
+
+
+- name: grafana-playground-storage
+  namespace: monitoring
+  labels:
+    app: storage
+    group: monitoring
+    name: grafana-playground-storage
+  chart: ./charts/nfs-volume
+  values:
+  - grafana-playground/nfs-volume.yml
+
+- name: grafana-playground
+  namespace: monitoring
+  labels:
+    app: grafana
+    group: monitoring
+    name: grafana-playground
+  chart: stable/grafana
+  # Latest version has a bug https://github.com/kubernetes/charts/pull/6196
+  version: 1.10.2
+  values:
+  - grafana-playground/grafana.yml
+  - ../config/grafana-playground/grafana-secret.yml
