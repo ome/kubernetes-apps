@@ -1,0 +1,33 @@
+alertmanager:
+  enabled: false
+kubeStateMetrics:
+  enabled: false
+nodeExporter:
+  enabled: false
+pushgateway:
+  enabled: false
+
+server:
+  baseURL: http://ome-lochy.openmicroscopy.org/prometheus-global
+  extraArgs:
+    # https://github.com/prometheus/prometheus/issues/2813#issuecomment-344359402
+    web.route-prefix: /
+  ingress:
+    enabled: false
+    # TODO: Enable
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/rewrite-target: /
+      nginx.ingress.kubernetes.io/add-base-url: "true"
+      nginx.ingress.kubernetes.io/auth-url: "https://$host/monitoring-oauth2/auth"
+      nginx.ingress.kubernetes.io/auth-signin: "https://$host/monitoring-oauth2/sign_in"
+      #nginx.ingress.kubernetes.io/auth-request-redirect: "https://$host/prometheus-global"
+    hosts:
+    # Requires Helm 2.8.2 due to a bug(?)
+    - ome-lochy.openmicroscopy.org/prometheus-global
+    tls:
+    - hosts:
+      - ome-lochy.openmicroscopy.org
+  persistentVolume:
+    enabled: true
+    existingClaim: prometheus-global-storage-nfs-volume

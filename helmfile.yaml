@@ -47,3 +47,27 @@ releases:
   values:
   - grafana-global/grafana.yml
   - ../config/grafana-global/grafana-secret.yml
+
+
+- name: prometheus-global-storage
+  namespace: monitoring
+  labels:
+    app: storage
+    group: monitoring
+    name: prometheus-global-storage
+  chart: ./charts/nfs-volume
+  values:
+  - prometheus-global/nfs-volume.yml
+
+- name: prometheus-global
+  namespace: monitoring
+  labels:
+    app: prometheus
+    group: monitoring
+    name: prometheus-global
+  chart: stable/prometheus
+  # Latest version 6.7.4 requires Helm > 2.8
+  version: 6.7.3
+  values:
+  - prometheus-global/prometheus.yml
+  - ../config/prometheus-global/prometheus.yml
