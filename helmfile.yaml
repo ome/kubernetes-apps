@@ -96,6 +96,29 @@ releases:
   - prometheus-k8s/prometheus.yml
 
 
+- name: prometheus-ome-storage
+  namespace: monitoring
+  labels:
+    app: storage
+    group: monitoring
+    name: prometheus-ome-storage
+  chart: ./charts/nfs-volume
+  values:
+  - prometheus-ome/nfs-volume.yml
+
+- name: prometheus-ome
+  namespace: monitoring
+  labels:
+    app: prometheus
+    group: monitoring
+    name: prometheus-ome
+  chart: stable/prometheus
+  version: 6.7.4
+  values:
+  - prometheus-ome/prometheus.yml
+  - ../config/prometheus-ome/prometheus.yml
+
+
 - name: prometheus-global-storage
   namespace: monitoring
   labels:
