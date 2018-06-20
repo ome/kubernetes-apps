@@ -61,6 +61,19 @@ releases:
   - ../config/grafana-global/grafana-secret.yml
 
 
+- name: monitoring-oauth2
+  namespace: monitoring
+  labels:
+    app: oauth2-proxy
+    group: monitoring
+    name: monitoring-oauth2
+  # The official stable/oauth2-proxy chart doesn't work
+  chart: ./charts/oauth2-proxy
+  values:
+  - monitoring-oauth2/oauth2-proxy.yml
+  - ../config/monitoring-oauth2/oauth2-proxy.yml
+
+
 - name: prometheus-k8s-storage
   namespace: monitoring
   labels:

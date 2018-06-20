@@ -1,0 +1,22 @@
+github:
+  #clientSecret: # Secret
+  #clientId: # Secret
+  organisation: openmicroscopy
+
+proxy:
+  upstream: http://prometheus-global-server/prometheus-global/,http://prometheus-k8s-server/prometheus-k8s/,http://prometheus-ome-server/prometheus-ome/
+  cookieName: oauth2_proxy_prometheus
+  prefix: /monitoring-oauth2
+
+ingress:
+  enabled: true
+  paths:
+  - /monitoring-oauth2
+  - /prometheus-global
+  - /prometheus-k8s
+  - /prometheus-ome
+  hosts:
+  - ome-lochy.openmicroscopy.org
+  tls:
+  - hosts:
+    - ome-lochy.openmicroscopy.org
