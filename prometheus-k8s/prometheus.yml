@@ -6,25 +6,8 @@ pushgateway:
 
 server:
   baseURL: https://ome-lochy.openmicroscopy.org/prometheus-k8s
-  extraArgs:
-    # https://github.com/prometheus/prometheus/issues/2813#issuecomment-344359402
-    web.route-prefix: /
-  ingress:
-    enabled: false
-    # TODO: Enable
-    annotations:
-      kubernetes.io/ingress.class: nginx
-      nginx.ingress.kubernetes.io/rewrite-target: /
-      nginx.ingress.kubernetes.io/add-base-url: "true"
-      nginx.ingress.kubernetes.io/auth-url: "https://$host/monitoring-oauth2/auth"
-      nginx.ingress.kubernetes.io/auth-signin: "https://$host/monitoring-oauth2/sign_in"
-      #nginx.ingress.kubernetes.io/auth-request-redirect: "https://$host/prometheus-k8s"
-    hosts:
-    # Requires Helm 2.8.2 due to a bug(?)
-    - ome-lochy.openmicroscopy.org/prometheus-k8s
-    tls:
-    - hosts:
-      - ome-lochy.openmicroscopy.org
+  prefixURL: /prometheus-k8s
+  # Ingress is handled by oauth2-proxy
   persistentVolume:
     enabled: true
     existingClaim: prometheus-k8s-storage-nfs-volume

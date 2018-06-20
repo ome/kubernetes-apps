@@ -1,7 +1,7 @@
 # Prometheus K8s
 
 Internal deployment of Prometheus for internal Kubernetes cluster metrics
-Application URL: https://ome-lochy.openmicroscopy.org/prometheus-k8s/ (currently disabled)
+Application URL: https://ome-lochy.openmicroscopy.org/prometheus-k8s/ (GitHub openmicroscopy OAuth2)
 
 
 ## Pre-installation
