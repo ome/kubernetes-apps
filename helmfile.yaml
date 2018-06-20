@@ -1,6 +1,18 @@
 releases:
 
 
+- name: nginx-ingress
+  namespace: nginx-ingress
+  labels:
+    app: nginx-ingress
+    group: ingress
+    name: nginx-ingress
+  chart: stable/nginx-ingress
+  version: 0.20.3
+  values:
+  - nginx-ingress/nginx-ingress.yml
+
+
 - name: grafana-playground-storage
   namespace: monitoring
   labels:

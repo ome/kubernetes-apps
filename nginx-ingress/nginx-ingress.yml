@@ -1,0 +1,17 @@
+controller:
+  daemonset:
+    useHostPort: true
+  kind: DaemonSet
+  tolerations:
+  - key: node-role.kubernetes.io/master
+    operator: Exists
+    effect: NoSchedule
+# Masters only, or masters + nodes?
+#  nodeSelector:
+#    node-role.kubernetes.io/master: "true"
+  stats:
+    enabled: false
+# Optionally specify SSL certificate
+# https://github.com/kubernetes/charts/issues/1495#issuecomment-342275665
+  extraArgs:
+    default-ssl-certificate: kube-system/star-openmicroscopy-org
