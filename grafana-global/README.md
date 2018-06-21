@@ -1,7 +1,7 @@
 # Grafana Global
 
 Internal deployment of Grafana providing a high-level overview of all OME monitored systems.
-Application URL: https://ome-lochy.openmicroscopy.org/grafana-global/
+Application URL: https://monitoring.openmicroscopy.org/grafana-global/
 
 Login: GitHub OAuth for members of openmicroscopy. All users are Grafana viewers.
 

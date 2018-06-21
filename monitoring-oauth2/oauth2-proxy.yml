@@ -16,7 +16,7 @@ ingress:
   - /prometheus-k8s
   - /prometheus-ome
   hosts:
-  - ome-lochy.openmicroscopy.org
+  - monitoring.openmicroscopy.org
   tls:
   - hosts:
-    - ome-lochy.openmicroscopy.org
+    - monitoring.openmicroscopy.org

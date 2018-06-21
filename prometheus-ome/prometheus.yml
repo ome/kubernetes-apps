@@ -8,7 +8,7 @@ pushgateway:
   enabled: false
 
 server:
-  baseURL: http://ome-lochy.openmicroscopy.org/prometheus-ome
+  baseURL: http://monitoring.openmicroscopy.org/prometheus-ome
   prefixURL: /prometheus-ome
   # Ingress is handled by oauth2-proxy
   persistentVolume:

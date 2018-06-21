@@ -1,7 +1,7 @@
 # Prometheus OME
 
 Internal deployment of Prometheus for OME UoD system metrics
-Application URL: https://ome-lochy.openmicroscopy.org/prometheus-ome/ (GitHub openmicroscopy OAuth2)
+Application URL: https://monitoring.openmicroscopy.org/prometheus-ome/ (GitHub openmicroscopy OAuth2)
 
 ## Pre-installation
 

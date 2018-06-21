@@ -5,10 +5,10 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /
   path: /grafana-playground
   hosts:
-  - ome-lochy.openmicroscopy.org
+  - monitoring.openmicroscopy.org
   tls:
   - hosts:
-    - ome-lochy.openmicroscopy.org
+    - monitoring.openmicroscopy.org
 
 persistence:
   enabled: true
@@ -25,6 +25,6 @@ env:
   GF_AUTH_GITHUB_TOKEN_URL: https://github.com/login/oauth/access_token
   GF_AUTH_GITHUB_API_URL: https://api.github.com/user
   GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: openmicroscopy
-  GF_SERVER_DOMAIN: ome-lochy.openmicroscopy.org
+  GF_SERVER_DOMAIN: monitoring.openmicroscopy.org
   GF_SERVER_ROOT_URL: "https://%(domain)s/grafana-playground/"
   GF_USERS_AUTO_ASSIGN_ORG_ROLE: Admin

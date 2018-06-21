@@ -1,7 +1,7 @@
 # Grafana Playground
 
 Internal deployment of Grafana for everyone to play with
-Application URL: https://ome-lochy.openmicroscopy.org/grafana-playground/
+Application URL: https://monitoring.openmicroscopy.org/grafana-playground/
 
 Login: GitHub OAuth for members of openmicroscopy. All users are Grafana admins.
 

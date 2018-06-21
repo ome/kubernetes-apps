@@ -5,7 +5,7 @@ pushgateway:
   enabled: false
 
 server:
-  baseURL: https://ome-lochy.openmicroscopy.org/prometheus-k8s
+  baseURL: https://monitoring.openmicroscopy.org/prometheus-k8s
   prefixURL: /prometheus-k8s
   # Ingress is handled by oauth2-proxy
   persistentVolume:
