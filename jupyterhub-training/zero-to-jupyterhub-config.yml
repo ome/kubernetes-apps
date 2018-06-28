@@ -1,0 +1,48 @@
+hub:
+  #cookieSecret: secret: openssl rand -hex 32
+  baseUrl: /jupyterhub-training/
+  db:
+    type: sqlite-memory
+
+debug:
+  enabled: true
+
+#auth: secret
+
+proxy:
+  #secretToken: secret: openssl rand -hex 32
+  service:
+    type: ClusterIP
+
+singleuser:
+  image:
+    name: snoopycrimecop/training-notebooks
+    tag: master_merge_daily
+    pullPolicy: Always
+  startTimeout: 1800
+  memory:
+    limit: 1G
+    guarantee: 100M
+  storage:
+    type: NONE
+  cmd: jupyter-labhub
+  #extraEnv: secret
+
+# Disable image pre-puller
+prePuller:
+  hook:
+    enabled: false
+
+ingress:
+  enabled: true
+  hosts:
+  - ome-lochy.openmicroscopy.org
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/proxy-body-size: 16m
+    ingress.kubernetes.io/proxy-read-timeout: 3600
+    ingress.kubernetes.io/proxy-send-timeout: 3600
+    #kubernetes.io/tls-acme: 'true'
+  tls:
+  - hosts:
+    - ome-lochy.openmicroscopy.org
