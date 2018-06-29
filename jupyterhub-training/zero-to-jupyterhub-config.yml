@@ -16,8 +16,10 @@ proxy:
 
 singleuser:
   image:
-    name: snoopycrimecop/training-notebooks
-    tag: master_merge_daily
+    #name: snoopycrimecop/training-notebooks
+    #tag: master_merge_daily
+    name: openmicroscopy/training-notebooks
+    tag: 0.2.0
     pullPolicy: Always
   startTimeout: 1800
   memory:
