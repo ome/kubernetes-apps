@@ -71,7 +71,9 @@ singleuser:
   storage:
     type: NONE
   cmd: jupyter-labhub
-  #extraEnv: secret
+  extraEnv:
+    IDR_HOST: idr.openmicroscopy.org
+    IDR_USER: public
 
 # Disable image pre-puller
 prePuller:
