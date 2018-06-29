@@ -23,8 +23,8 @@ singleuser:
     pullPolicy: Always
   startTimeout: 1800
   memory:
-    limit: 1G
-    guarantee: 100M
+    limit: 2G
+    guarantee: 512M
   storage:
     type: NONE
   cmd: jupyter-labhub
