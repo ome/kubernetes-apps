@@ -1,8 +1,8 @@
 # Default values for oauth2-proxy.
 replicaCount: 1
 image:
-  repository: manics/oauth2-proxy-docker
-  tag: latest
+  repository: openmicroscopy/oauth2-proxy
+  tag: 2.2.0-1
   pullPolicy: IfNotPresent
 github:
   clientSecret:
