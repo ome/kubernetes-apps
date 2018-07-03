@@ -16,13 +16,18 @@ proxy:
 
 singleuser:
   image:
-    name: snoopycrimecop/training-notebooks
-    tag: master_merge_daily
+    #name: snoopycrimecop/training-notebooks
+    #tag: master_merge_daily
+    name: openmicroscopy/training-notebooks
+    tag: 0.2.0
     pullPolicy: Always
   startTimeout: 1800
+  cpu:
+    limit: 2
+    guarantee: 0.1
   memory:
-    limit: 1G
-    guarantee: 100M
+    limit: 2G
+    guarantee: 512M
   storage:
     type: NONE
   cmd: jupyter-labhub
