@@ -1,0 +1,12 @@
+# Required, must be a valid directory basename
+#name:
+
+accessModes:
+- ReadWriteMany
+
+# Quota is ignored by NFS
+size: 1Mi
+
+nfs:
+  parentpath: /uod/idr/k8s-volumes
+  server: idr-data.openmicroscopy.org

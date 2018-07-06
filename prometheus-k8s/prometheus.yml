@@ -1,0 +1,14 @@
+alertmanager:
+  enabled: false
+
+pushgateway:
+  enabled: false
+
+server:
+  baseURL: https://monitoring.openmicroscopy.org/prometheus-k8s
+  prefixURL: /prometheus-k8s
+  # Ingress is handled by oauth2-proxy
+  persistentVolume:
+    enabled: true
+    existingClaim: prometheus-k8s-storage-nfs-volume
+  retention: 21d

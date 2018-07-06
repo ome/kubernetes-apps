@@ -1,0 +1,142 @@
+releases:
+
+
+- name: nginx-ingress
+  namespace: nginx-ingress
+  labels:
+    app: nginx-ingress
+    group: ingress
+    name: nginx-ingress
+  chart: stable/nginx-ingress
+  version: 0.20.3
+  values:
+  - nginx-ingress/nginx-ingress.yml
+
+
+- name: grafana-playground-storage
+  namespace: monitoring
+  labels:
+    app: storage
+    group: monitoring
+    name: grafana-playground-storage
+  chart: ./charts/nfs-volume
+  values:
+  - grafana-playground/nfs-volume.yml
+
+- name: grafana-playground
+  namespace: monitoring
+  labels:
+    app: grafana
+    group: monitoring
+    name: grafana-playground
+  chart: stable/grafana
+  # Latest version has a bug https://github.com/kubernetes/charts/pull/6196
+  version: 1.10.2
+  values:
+  - grafana-playground/grafana.yml
+  - ../config/grafana-playground/grafana-secret.yml
+
+
+- name: grafana-global-storage
+  namespace: monitoring
+  labels:
+    app: storage
+    group: monitoring
+    name: grafana-global-storage
+  chart: ./charts/nfs-volume
+  values:
+  - grafana-global/nfs-volume.yml
+
+- name: grafana-global
+  namespace: monitoring
+  labels:
+    app: grafana
+    group: monitoring
+    name: grafana-global
+  chart: stable/grafana
+  # Latest version has a bug https://github.com/kubernetes/charts/pull/6196
+  version: 1.10.2
+  values:
+  - grafana-global/grafana.yml
+  - ../config/grafana-global/grafana-secret.yml
+
+
+- name: monitoring-oauth2
+  namespace: monitoring
+  labels:
+    app: oauth2-proxy
+    group: monitoring
+    name: monitoring-oauth2
+  # The official stable/oauth2-proxy chart doesn't work
+  chart: ./charts/oauth2-proxy
+  values:
+  - monitoring-oauth2/oauth2-proxy.yml
+  - ../config/monitoring-oauth2/oauth2-proxy.yml
+
+
+- name: prometheus-k8s-storage
+  namespace: monitoring
+  labels:
+    app: storage
+    group: monitoring
+    name: prometheus-k8s-storage
+  chart: ./charts/nfs-volume
+  values:
+  - prometheus-k8s/nfs-volume.yml
+
+- name: prometheus-k8s
+  namespace: monitoring
+  labels:
+    app: prometheus
+    group: monitoring
+    name: prometheus-k8s
+  chart: stable/prometheus
+  version: 6.7.4
+  values:
+  - prometheus-k8s/prometheus.yml
+
+
+- name: prometheus-ome-storage
+  namespace: monitoring
+  labels:
+    app: storage
+    group: monitoring
+    name: prometheus-ome-storage
+  chart: ./charts/nfs-volume
+  values:
+  - prometheus-ome/nfs-volume.yml
+
+- name: prometheus-ome
+  namespace: monitoring
+  labels:
+    app: prometheus
+    group: monitoring
+    name: prometheus-ome
+  chart: stable/prometheus
+  version: 6.7.4
+  values:
+  - prometheus-ome/prometheus.yml
+  - ../config/prometheus-ome/prometheus.yml
+
+
+- name: prometheus-global-storage
+  namespace: monitoring
+  labels:
+    app: storage
+    group: monitoring
+    name: prometheus-global-storage
+  chart: ./charts/nfs-volume
+  values:
+  - prometheus-global/nfs-volume.yml
+
+- name: prometheus-global
+  namespace: monitoring
+  labels:
+    app: prometheus
+    group: monitoring
+    name: prometheus-global
+  chart: stable/prometheus
+  version: 6.7.4
+  values:
+  - prometheus-global/prometheus.yml
+  - ../config/prometheus-global/prometheus.yml

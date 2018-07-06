@@ -1,0 +1,17 @@
+alertmanager:
+  enabled: false
+kubeStateMetrics:
+  enabled: false
+nodeExporter:
+  enabled: false
+pushgateway:
+  enabled: false
+
+server:
+  baseURL: http://monitoring.openmicroscopy.org/prometheus-ome
+  prefixURL: /prometheus-ome
+  # Ingress is handled by oauth2-proxy
+  persistentVolume:
+    enabled: true
+    existingClaim: prometheus-ome-storage-nfs-volume
+  retention: 1y
