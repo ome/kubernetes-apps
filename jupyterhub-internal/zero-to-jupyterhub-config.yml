@@ -18,6 +18,12 @@ hub:
             'snoopycrimecop/idr-notebooks:master_merge_daily',
         }
       }, {
+        'display_name': 'snoopycrimecop/idr-notebooks:itr_merge_daily',
+        'kubespawner_override': {
+          'singleuser_image_spec':
+            'snoopycrimecop/idr-notebooks:itr_merge_daily',
+        }
+      }, {
         'display_name': 'imagedata/idr-notebooks:latest',
         'kubespawner_override': {
           'singleuser_image_spec':
