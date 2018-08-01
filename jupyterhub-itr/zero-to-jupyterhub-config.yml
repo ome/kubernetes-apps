@@ -1,0 +1,54 @@
+hub:
+  #cookieSecret: secret: openssl rand -hex 32
+  baseUrl: /jupyterhub-itr/
+  db:
+    type: sqlite-memory
+
+debug:
+  enabled: true
+
+auth:
+  type: tmp
+
+proxy:
+  #secretToken: secret: openssl rand -hex 32
+  service:
+    type: ClusterIP
+
+singleuser:
+  image:
+    name: snoopycrimecop/idr-notebooks
+    tag: itr_merge_daily
+    pullPolicy: Always
+  startTimeout: 1800
+  cpu:
+    limit: 2
+    guarantee: 0.1
+  memory:
+    limit: 2G
+    guarantee: 512M
+  storage:
+    type: NONE
+  #cmd: jupyter-labhub
+  extraEnv:
+    IDR_HOST: idr.openmicroscopy.org
+    IDR_USER: public
+
+# Disable image pre-puller
+prePuller:
+  hook:
+    enabled: false
+
+ingress:
+  enabled: true
+  hosts:
+  - ome-lochy.openmicroscopy.org
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/proxy-body-size: 16m
+    ingress.kubernetes.io/proxy-read-timeout: 3600
+    ingress.kubernetes.io/proxy-send-timeout: 3600
+    #kubernetes.io/tls-acme: 'true'
+  tls:
+  - hosts:
+    - ome-lochy.openmicroscopy.org
