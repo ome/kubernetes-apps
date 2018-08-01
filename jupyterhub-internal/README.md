@@ -9,10 +9,10 @@ Application URL: https://ome-lochy.openmicroscopy.org/jupyterhub-internal/
     helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
     helm repo update
     helm upgrade --install jupyter-int --namespace=jupyter-int \
-        jupyterhub/jupyterhub --version=v0.7-e2757f0 \
+        jupyterhub/jupyterhub --version=v0.7-5bd0b65 \
         -f zero-to-jupyterhub-config.yml -f path/to/zero-to-jupyterhub-secret.yml
 
-Note: When upgrading from the previously installed version `v0.7-d617e0a` you must add the flag `--force` due to changes in labels.
+Note: When upgrading from a previously installed version you may sometimes need to add the flag `--force` due to changes in labels.
 
 
 ## Post-installation
