@@ -17,8 +17,10 @@ proxy:
 
 singleuser:
   image:
-    name: snoopycrimecop/idr-notebooks
-    tag: itr_merge_daily
+    #name: snoopycrimecop/idr-notebooks
+    #tag: itr_merge_daily
+    name: manics/idr-notebooks
+    tag: devel
     pullPolicy: Always
   startTimeout: 1800
   cpu:
@@ -29,7 +31,7 @@ singleuser:
     guarantee: 512M
   storage:
     type: NONE
-  #cmd: jupyter-labhub
+  cmd: jupyter-labhub
   extraEnv:
     IDR_HOST: idr.openmicroscopy.org
     IDR_USER: public
