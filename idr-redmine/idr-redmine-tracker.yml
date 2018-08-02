@@ -1,5 +1,5 @@
 redmine:
-  image: "manics/test-redmine:latest"
+  image: "imagedata/idr-redmine-tracker:20180802"
   pvcName: idr-redmine-storage-nfs-volume
 
 secrets:
