@@ -140,3 +140,27 @@ releases:
   values:
   - prometheus-global/prometheus.yml
   - ../config/prometheus-global/prometheus.yml
+
+
+- name: idr-redmine-storage
+  namespace: idr-redmine
+  labels:
+    app: storage
+    group: redmine
+    name: idr-redmine-storage
+  chart: ./charts/nfs-volume
+  values:
+  - idr-redmine/nfs-volume.yml
+
+- name: idr-redmine
+  namespace: idr-redmine
+  labels:
+    app: redmine
+    group: redmine
+    name: idr-redmine
+  chart: ./idr-redmine-tracker/chart
+  values:
+  - idr-redmine/idr-redmine-tracker.yml
+  # NOTE: you must create secret manually with the current config:
+  # pass show x/idr-redmine/secret-config.yaml > idr-redmine/secret-config.yaml
+  # kubectl apply -f idr-redmine/secret-config.yaml
