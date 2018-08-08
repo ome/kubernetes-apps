@@ -3,6 +3,10 @@ hub:
   baseUrl: /jupyterhub-itr/
   db:
     type: sqlite-memory
+  # Storing the db in memory means it's lost on restart
+  # This may help to avoid dangling servers
+  extraConfig: |
+    c.JupyterHub.cleanup_servers = True
 
 debug:
   enabled: true
@@ -25,7 +29,7 @@ singleuser:
     limit: 2
     guarantee: 0.1
   memory:
-    limit: 2G
+    limit: 4G
     guarantee: 512M
   storage:
     type: NONE
