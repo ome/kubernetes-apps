@@ -29,7 +29,7 @@ singleuser:
     limit: 2
     guarantee: 0.1
   memory:
-    limit: 8G
+    limit: 6.5G
     guarantee: 512M
   storage:
     type: NONE
