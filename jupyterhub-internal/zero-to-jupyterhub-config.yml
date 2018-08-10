@@ -89,7 +89,6 @@ ingress:
     ingress.kubernetes.io/proxy-body-size: 16m
     ingress.kubernetes.io/proxy-read-timeout: 3600
     ingress.kubernetes.io/proxy-send-timeout: 3600
-    #kubernetes.io/tls-acme: 'true'
   tls:
   - hosts:
     - ome-lochy.openmicroscopy.org
