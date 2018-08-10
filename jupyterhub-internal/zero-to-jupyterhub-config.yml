@@ -41,12 +41,6 @@ hub:
           'singleuser_image_spec':
             'openmicroscopy/training-notebooks:latest',
         }
-      }, {
-        'display_name': 'manics/idr-notebooks:devel',
-        'kubespawner_override': {
-          'singleuser_image_spec':
-            'manics/idr-notebooks:devel',
-        }
       }
     ]
 
