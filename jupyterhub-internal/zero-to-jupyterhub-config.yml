@@ -3,6 +3,48 @@ hub:
   baseUrl: /jupyterhub-internal/
   db:
     type: sqlite-memory
+  extraConfig: |
+    c.KubeSpawner.profile_list = [
+      {
+        'display_name': 'snoopycrimecop/jupyter-docker:master_merge_daily',
+        'kubespawner_override': {
+          'singleuser_image_spec':
+            'snoopycrimecop/jupyter-docker:master_merge_daily',
+        }
+      }, {
+        'display_name': 'snoopycrimecop/idr-notebooks:master_merge_daily',
+        'kubespawner_override': {
+          'singleuser_image_spec':
+            'snoopycrimecop/idr-notebooks:master_merge_daily',
+        }
+      }, {
+        'display_name': 'snoopycrimecop/idr-notebooks:itr_merge_daily',
+        'kubespawner_override': {
+          'singleuser_image_spec':
+            'snoopycrimecop/idr-notebooks:itr_merge_daily',
+        }
+      }, {
+        'display_name': 'imagedata/idr-notebooks:latest',
+        'kubespawner_override': {
+          'singleuser_image_spec':
+            'imagedata/idr-notebooks:latest',
+        }
+      }, {
+        'display_name': 'snoopycrimecop/training-notebooks:master_merge_daily',
+        'kubespawner_override': {
+          'singleuser_image_spec':
+            'snoopycrimecop/training-notebooks:master_merge_daily',
+        }
+      }, {
+        'display_name': 'openmicroscopy/training-notebooks:latest',
+        'kubespawner_override': {
+          'singleuser_image_spec':
+            'openmicroscopy/training-notebooks:latest',
+        }
+      }
+    ]
+
+
 
 debug:
   enabled: true
@@ -20,13 +62,18 @@ singleuser:
     tag: master_merge_trigger
     pullPolicy: Always
   startTimeout: 1800
+  cpu:
+    limit: 2
+    guarantee: 0.1
   memory:
-    limit: 1G
-    guarantee: 100M
+    limit: 2G
+    guarantee: 512M
   storage:
     type: NONE
   cmd: jupyter-labhub
-  #extraEnv: secret
+  extraEnv:
+    IDR_HOST: idr.openmicroscopy.org
+    IDR_USER: public
 
 # Disable image pre-puller
 prePuller:
@@ -42,7 +89,6 @@ ingress:
     ingress.kubernetes.io/proxy-body-size: 16m
     ingress.kubernetes.io/proxy-read-timeout: 3600
     ingress.kubernetes.io/proxy-send-timeout: 3600
-    #kubernetes.io/tls-acme: 'true'
   tls:
   - hosts:
     - ome-lochy.openmicroscopy.org
