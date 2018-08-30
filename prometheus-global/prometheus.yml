@@ -14,3 +14,4 @@ server:
   persistentVolume:
     enabled: true
     existingClaim: prometheus-global-storage-nfs-volume
+  retention: 5y
