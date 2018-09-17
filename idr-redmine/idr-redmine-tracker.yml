@@ -20,3 +20,5 @@ gmail:
 
 ingress:
   host: idr-redmine.openmicroscopy.org
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 16m
