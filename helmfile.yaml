@@ -8,7 +8,7 @@ releases:
     group: ingress
     name: nginx-ingress
   chart: stable/nginx-ingress
-  version: 0.20.3
+  version: 0.28.2
   values:
   - nginx-ingress/nginx-ingress.yml
 
