@@ -1,4 +1,11 @@
+repositories:
+- name: jupyterhub
+  url: https://jupyterhub.github.io/helm-chart/
+
+
 releases:
+
+## System
 
 
 - name: nginx-ingress
@@ -12,6 +19,8 @@ releases:
   values:
   - nginx-ingress/nginx-ingress.yml
 
+
+## Monitoring
 
 - name: grafana-playground-storage
   namespace: monitoring
@@ -142,6 +151,8 @@ releases:
   - ../config/prometheus-global/prometheus.yml
 
 
+## Redmine
+
 - name: idr-redmine-storage
   namespace: idr-redmine
   labels:
@@ -164,3 +175,39 @@ releases:
   # NOTE: you must create secret manually with the current config:
   # pass show x/idr-redmine/secret-config.yaml > idr-redmine/secret-config.yaml
   # kubectl apply -f idr-redmine/secret-config.yaml
+
+
+## JupyterHub
+
+- name: jupyter-int
+  namespace: jupyter-int
+  labels:
+    app: jupyterhub
+    group: jupyterhub
+  chart: jupyterhub/jupyterhub
+  version: v0.7-5bd0b65
+  values:
+  - jupyterhub-internal/zero-to-jupyterhub-config.yml
+  - ../config/jupyterhub-internal/zero-to-jupyterhub-secret.yml
+
+- name: jupyter-itr
+  namespace: jupyter-itr
+  labels:
+    app: jupyterhub
+    group: jupyterhub
+  chart: jupyterhub/jupyterhub
+  version: v0.7-15e87d6
+  values:
+  - jupyterhub-itr/zero-to-jupyterhub-config.yml
+  - ../config/jupyterhub-itr/zero-to-jupyterhub-secret.yml
+
+- name: jupyter-train
+  namespace: jupyter-train
+  labels:
+    app: jupyterhub
+    group: jupyterhub
+  chart: jupyterhub/jupyterhub
+  version: v0.7-d617e0a
+  values:
+  - jupyterhub-training/zero-to-jupyterhub-config.yml
+  - ../config/jupyterhub-training/zero-to-jupyterhub-secret.yml
