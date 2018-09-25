@@ -6,11 +6,9 @@ Application URL: https://ome-lochy.openmicroscopy.org/jupyterhub-training/
 
 ## Installation
 
-    helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
-    helm repo update
-    helm upgrade --install jupyter-train --namespace=jupyter-train \
-        jupyterhub/jupyterhub --version=v0.7-d617e0a \
-        -f zero-to-jupyterhub-config.yml -f path/to/zero-to-jupyterhub-secret.yml
+See [helmfile.yaml](../helmfile.yaml)
+
+Note: When upgrading from a previously installed version you may sometimes need to add the flag `--force` due to changes in labels.
 
 
 ## Post-installation

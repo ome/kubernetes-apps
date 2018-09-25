@@ -1,4 +1,11 @@
+repositories:
+- name: jupyterhub
+  url: https://jupyterhub.github.io/helm-chart/
+
+
 releases:
+
+## System
 
 
 - name: nginx-ingress
@@ -6,19 +13,19 @@ releases:
   labels:
     app: nginx-ingress
     group: ingress
-    name: nginx-ingress
   chart: stable/nginx-ingress
   version: 0.28.2
   values:
   - nginx-ingress/nginx-ingress.yml
 
 
+## Monitoring
+
 - name: grafana-playground-storage
   namespace: monitoring
   labels:
     app: storage
     group: monitoring
-    name: grafana-playground-storage
   chart: ./charts/nfs-volume
   values:
   - grafana-playground/nfs-volume.yml
@@ -28,7 +35,6 @@ releases:
   labels:
     app: grafana
     group: monitoring
-    name: grafana-playground
   chart: stable/grafana
   # Latest version has a bug https://github.com/kubernetes/charts/pull/6196
   version: 1.10.2
@@ -42,7 +48,6 @@ releases:
   labels:
     app: storage
     group: monitoring
-    name: grafana-global-storage
   chart: ./charts/nfs-volume
   values:
   - grafana-global/nfs-volume.yml
@@ -52,7 +57,6 @@ releases:
   labels:
     app: grafana
     group: monitoring
-    name: grafana-global
   chart: stable/grafana
   # Latest version has a bug https://github.com/kubernetes/charts/pull/6196
   version: 1.10.2
@@ -66,7 +70,6 @@ releases:
   labels:
     app: oauth2-proxy
     group: monitoring
-    name: monitoring-oauth2
   # The official stable/oauth2-proxy chart doesn't work
   chart: ./charts/oauth2-proxy
   values:
@@ -79,7 +82,6 @@ releases:
   labels:
     app: storage
     group: monitoring
-    name: prometheus-k8s-storage
   chart: ./charts/nfs-volume
   values:
   - prometheus-k8s/nfs-volume.yml
@@ -89,7 +91,6 @@ releases:
   labels:
     app: prometheus
     group: monitoring
-    name: prometheus-k8s
   chart: stable/prometheus
   version: 6.7.4
   values:
@@ -101,7 +102,6 @@ releases:
   labels:
     app: storage
     group: monitoring
-    name: prometheus-ome-storage
   chart: ./charts/nfs-volume
   values:
   - prometheus-ome/nfs-volume.yml
@@ -111,7 +111,6 @@ releases:
   labels:
     app: prometheus
     group: monitoring
-    name: prometheus-ome
   chart: stable/prometheus
   version: 6.7.4
   values:
@@ -124,7 +123,6 @@ releases:
   labels:
     app: storage
     group: monitoring
-    name: prometheus-global-storage
   chart: ./charts/nfs-volume
   values:
   - prometheus-global/nfs-volume.yml
@@ -134,7 +132,6 @@ releases:
   labels:
     app: prometheus
     group: monitoring
-    name: prometheus-global
   chart: stable/prometheus
   version: 6.7.4
   values:
@@ -142,12 +139,13 @@ releases:
   - ../config/prometheus-global/prometheus.yml
 
 
+## Redmine
+
 - name: idr-redmine-storage
   namespace: idr-redmine
   labels:
     app: storage
     group: redmine
-    name: idr-redmine-storage
   chart: ./charts/nfs-volume
   values:
   - idr-redmine/nfs-volume.yml
@@ -157,10 +155,45 @@ releases:
   labels:
     app: redmine
     group: redmine
-    name: idr-redmine
   chart: ./idr-redmine-tracker/chart
   values:
   - idr-redmine/idr-redmine-tracker.yml
   # NOTE: you must create secret manually with the current config:
   # pass show x/idr-redmine/secret-config.yaml > idr-redmine/secret-config.yaml
   # kubectl apply -f idr-redmine/secret-config.yaml
+
+
+## JupyterHub
+
+- name: jupyter-int
+  namespace: jupyter-int
+  labels:
+    app: jupyterhub
+    group: jupyterhub
+  chart: jupyterhub/jupyterhub
+  version: v0.7-5bd0b65
+  values:
+  - jupyterhub-internal/zero-to-jupyterhub-config.yml
+  - ../config/jupyterhub-internal/zero-to-jupyterhub-secret.yml
+
+- name: jupyter-itr
+  namespace: jupyter-itr
+  labels:
+    app: jupyterhub
+    group: jupyterhub
+  chart: jupyterhub/jupyterhub
+  version: v0.7-15e87d6
+  values:
+  - jupyterhub-itr/zero-to-jupyterhub-config.yml
+  - ../config/jupyterhub-itr/zero-to-jupyterhub-secret.yml
+
+- name: jupyter-train
+  namespace: jupyter-train
+  labels:
+    app: jupyterhub
+    group: jupyterhub
+  chart: jupyterhub/jupyterhub
+  version: v0.7-d617e0a
+  values:
+  - jupyterhub-training/zero-to-jupyterhub-config.yml
+  - ../config/jupyterhub-training/zero-to-jupyterhub-secret.yml
