@@ -70,6 +70,14 @@ singleuser:
     guarantee: 512M
   storage:
     type: NONE
+    extraVolumes:
+    - name: jupyterhub-sharedscratch-rw
+      persistentVolumeClaim:
+        claimName: jupyterhub-internal-storage-nfs-volume
+    extraVolumeMounts:
+    - name: jupyterhub-sharedscratch-rw
+      mountPath: /home/jovyan/shared
+      subPath: shared
   cmd: jupyter-labhub
   extraEnv:
     IDR_HOST: idr.openmicroscopy.org
