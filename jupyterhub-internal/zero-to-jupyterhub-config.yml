@@ -30,6 +30,12 @@ hub:
             'imagedata/idr-notebooks:latest',
         }
       }, {
+        'display_name': 'imagedata/idr-notebooks:VAE-0.5.2',
+        'kubespawner_override': {
+          'singleuser_image_spec':
+            'imagedata/idr-notebooks:VAE-0.5.2',
+        }
+      }, {
         'display_name': 'snoopycrimecop/training-notebooks:master_merge_daily',
         'kubespawner_override': {
           'singleuser_image_spec':
@@ -40,6 +46,12 @@ hub:
         'kubespawner_override': {
           'singleuser_image_spec':
             'openmicroscopy/training-notebooks:latest',
+        }
+      }, {
+        'display_name': 'openmicroscopy/training-notebooks:0.3.0',
+        'kubespawner_override': {
+          'singleuser_image_spec':
+            'openmicroscopy/training-notebooks:0.3.0',
         }
       }
     ]
