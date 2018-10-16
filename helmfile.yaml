@@ -214,7 +214,7 @@ releases:
 - name: minio-testfast
   namespace: minio-test
   labels:
-    app: s3-test
+    app: minio
     group: objectstore
   chart: ./charts/minio
   values:
