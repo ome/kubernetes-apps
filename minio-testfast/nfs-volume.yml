@@ -1,0 +1,3 @@
+name: minio-test
+nfs:
+  parentpath: /uod/idr/objectstore

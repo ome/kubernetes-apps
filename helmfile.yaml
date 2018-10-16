@@ -197,3 +197,36 @@ releases:
   values:
   - jupyterhub-training/zero-to-jupyterhub-config.yml
   - ../config/jupyterhub-training/zero-to-jupyterhub-secret.yml
+
+
+## Object store
+
+- name: minio-test-storage
+  namespace: minio-test
+  labels:
+    app: storage
+    group: objectstore
+  chart: ./charts/nfs-volume
+  values:
+  - minio-testfast/nfs-volume.yml
+  # This volume is shared with minio-testslow
+
+- name: minio-testfast
+  namespace: minio-test
+  labels:
+    app: s3-test
+    group: objectstore
+  chart: ./charts/minio
+  values:
+  - minio-testfast/minio.yml
+  - ../config/minio-testfast/minio.yml
+
+- name: minio-testslow
+  namespace: minio-test
+  labels:
+    app: minio
+    group: objectstore
+  chart: ./charts/minio
+  values:
+  - minio-testslow/minio.yml
+  - ../config/minio-testslow/minio.yml
