@@ -4,3 +4,6 @@
 [submodule "apacheds"]
 	path = apacheds
 	url = https://github.com/openmicroscopy/apacheds-k8s-app.git
+[submodule "charts/minio"]
+	path = charts/minio
+	url = https://github.com/manics/minio-helm-chart.git
