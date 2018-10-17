@@ -3,7 +3,7 @@
 
 persistence:
   enabled: true
-  existingClaim: minio-test-storage-nfs-volume
+  existingClaim: minio-storage-nfs-volume
   accessMode: ReadWriteMany
 
 nasgateway:
@@ -18,8 +18,8 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
   hosts:
-  - minio-testfast.openmicroscopy.org
+  - minio.openmicroscopy.org
   tls:
   - hosts:
-    - minio-testfast.openmicroscopy.org
+    - minio.openmicroscopy.org
   path: /

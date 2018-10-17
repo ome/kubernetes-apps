@@ -201,32 +201,32 @@ releases:
 
 ## Object store
 
-- name: minio-test-storage
-  namespace: minio-test
+- name: minio-storage
+  namespace: minio
   labels:
     app: storage
     group: objectstore
   chart: ./charts/nfs-volume
   values:
-  - minio-testfast/nfs-volume.yml
-  # This volume is shared with minio-testslow
+  - minio/nfs-volume.yml
+  # This volume is shared with minio-slow
 
-- name: minio-testfast
-  namespace: minio-test
+- name: minio
+  namespace: minio
   labels:
     app: minio
     group: objectstore
   chart: ./charts/minio
   values:
-  - minio-testfast/minio.yml
-  - ../config/minio-testfast/minio.yml
+  - minio/minio.yml
+  - ../config/minio/minio.yml
 
-- name: minio-testslow
-  namespace: minio-test
+- name: minio-slow
+  namespace: minio
   labels:
     app: minio
     group: objectstore
   chart: ./charts/minio
   values:
-  - minio-testslow/minio.yml
-  - ../config/minio-testslow/minio.yml
+  - minio-slow/minio.yml
+  - ../config/minio-slow/minio.yml

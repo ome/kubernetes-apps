@@ -3,7 +3,7 @@
 
 persistence:
   enabled: true
-  existingClaim: minio-test-storage-nfs-volume
+  existingClaim: minio-storage-nfs-volume
   accessMode: ReadWriteMany
 
 nasgateway:
@@ -18,10 +18,10 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
   hosts:
-  - minio-testslow.openmicroscopy.org
+  - minio-slow.openmicroscopy.org
   tls:
   - hosts:
-    - minio-testslow.openmicroscopy.org
+    - minio-slow.openmicroscopy.org
   path: /
 
 # https://github.com/minrk/tc-init/tree/0.0.4
