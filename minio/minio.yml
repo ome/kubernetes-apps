@@ -1,0 +1,25 @@
+#accessKey: # Secret
+#secretKey: # Secret
+
+persistence:
+  enabled: true
+  existingClaim: minio-storage-nfs-volume
+  accessMode: ReadWriteMany
+
+nasgateway:
+  enabled: true
+  replicas: 1
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+  hosts:
+  - minio.openmicroscopy.org
+  tls:
+  - hosts:
+    - minio.openmicroscopy.org
+  path: /

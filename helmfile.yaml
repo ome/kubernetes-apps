@@ -197,3 +197,36 @@ releases:
   values:
   - jupyterhub-training/zero-to-jupyterhub-config.yml
   - ../config/jupyterhub-training/zero-to-jupyterhub-secret.yml
+
+
+## Object store
+
+- name: minio-storage
+  namespace: minio
+  labels:
+    app: storage
+    group: objectstore
+  chart: ./charts/nfs-volume
+  values:
+  - minio/nfs-volume.yml
+  # This volume is shared with minio-slow
+
+- name: minio
+  namespace: minio
+  labels:
+    app: minio
+    group: objectstore
+  chart: ./charts/minio
+  values:
+  - minio/minio.yml
+  - ../config/minio/minio.yml
+
+- name: minio-slow
+  namespace: minio
+  labels:
+    app: minio
+    group: objectstore
+  chart: ./charts/minio
+  values:
+  - minio-slow/minio.yml
+  - ../config/minio-slow/minio.yml
