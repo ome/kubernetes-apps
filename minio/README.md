@@ -1,4 +1,4 @@
-# Minio test server
+# Minio server
 
 Minio S3 compatible object store running as a NAS gateway.
 Application URL: https://minio.openmicroscopy.org/
