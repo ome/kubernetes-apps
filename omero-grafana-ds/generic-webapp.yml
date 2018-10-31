@@ -1,0 +1,32 @@
+image:
+  repository: registry.gitlab.com/openmicroscopy/incubator/omero-grafana-json-datasource
+  tag: 0.1.1
+
+internalPort: 5000
+args:
+  - --workers
+  - 2
+  - --timeout
+  - 60
+
+probe:
+  liveness:
+    # Sometimes seems to be a bit slow starting up
+    initialDelay: 60
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  path: /omero-grafana-ds
+  hosts:
+  - ome-lochy.openmicroscopy.org
+  tls:
+  - hosts:
+    - ome-lochy.openmicroscopy.org
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 1Gi

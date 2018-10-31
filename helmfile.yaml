@@ -139,6 +139,16 @@ releases:
   - ../config/prometheus-global/prometheus.yml
 
 
+- name: omero-grafana-ds
+  namespace: monitoring
+  labels:
+    app: omero-grafana-json-datasource
+    group: monitoring
+  chart: ./charts/generic-webapp
+  values:
+  - omero-grafana-ds/generic-webapp.yml
+
+
 ## Redmine
 
 - name: idr-redmine-storage
