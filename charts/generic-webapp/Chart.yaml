@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Generic webapp deployment
+name: generic-webapp
+version: 0.1.0
