@@ -12,7 +12,7 @@ kubectl create --namespace=kube-system secret tls star-openmicroscopy-org-<date>
 
 Ensure `default-ssl-certificate` in [`nginx-ingress.yml`](nginx-ingress.yml) corresponds to `star-openmicroscopy-org-<date>`.
 
-When changing a certificate you amy need to force a restart of the nginx-ingress pods:
+When changing a certificate you may need to force a restart of the nginx-ingress pods:
 
 ```
 kubectl -n nginx-ingress delete pods -l app=nginx-ingress,component=
