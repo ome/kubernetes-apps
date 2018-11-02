@@ -165,6 +165,15 @@ releases:
 
 ## JupyterHub
 
+- name: jupyterhub-internal-storage
+  namespace: jupyter-int
+  labels:
+    app: storage
+    group: jupyterhub
+  chart: ./charts/nfs-volume
+  values:
+  - jupyterhub-internal/nfs-volume.yml
+
 - name: jupyter-int
   namespace: jupyter-int
   labels:
