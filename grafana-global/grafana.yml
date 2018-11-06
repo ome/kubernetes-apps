@@ -28,3 +28,6 @@ env:
   GF_SERVER_DOMAIN: monitoring.openmicroscopy.org
   GF_SERVER_ROOT_URL: "https://%(domain)s/grafana-global/"
   GF_USERS_AUTO_ASSIGN_ORG_ROLE: Viewer
+
+plugins:
+- grafana-simple-json-datasource

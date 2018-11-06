@@ -36,8 +36,7 @@ releases:
     app: grafana
     group: monitoring
   chart: stable/grafana
-  # Latest version has a bug https://github.com/kubernetes/charts/pull/6196
-  version: 1.10.2
+  version: 1.17.4
   values:
   - grafana-playground/grafana.yml
   - ../config/grafana-playground/grafana-secret.yml
@@ -58,8 +57,7 @@ releases:
     app: grafana
     group: monitoring
   chart: stable/grafana
-  # Latest version has a bug https://github.com/kubernetes/charts/pull/6196
-  version: 1.10.2
+  version: 1.17.4
   values:
   - grafana-global/grafana.yml
   - ../config/grafana-global/grafana-secret.yml
@@ -137,6 +135,16 @@ releases:
   values:
   - prometheus-global/prometheus.yml
   - ../config/prometheus-global/prometheus.yml
+
+
+- name: omero-grafana-ds
+  namespace: monitoring
+  labels:
+    app: omero-grafana-json-datasource
+    group: monitoring
+  chart: ./charts/generic-webapp
+  values:
+  - omero-grafana-ds/generic-webapp.yml
 
 
 ## Redmine
