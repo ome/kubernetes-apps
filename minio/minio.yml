@@ -23,3 +23,6 @@ ingress:
   - hosts:
     - minio.openmicroscopy.org
   path: /
+
+debug:
+  http: /export/minio-http-trace.log
