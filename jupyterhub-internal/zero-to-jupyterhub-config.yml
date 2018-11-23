@@ -22,6 +22,8 @@ hub:
         'kubespawner_override': {
           'singleuser_image_spec':
             'snoopycrimecop/idr-notebooks:itr_merge_daily',
+          'cpu_limit': 2,
+          'mem_limit': '6.5G',
         }
       }, {
         'display_name': 'imagedata/idr-notebooks:latest',
@@ -74,11 +76,13 @@ singleuser:
     tag: master_merge_trigger
     pullPolicy: Always
   startTimeout: 1800
+  # Set relatively low defaults for CPU and memory
+  # Change them for individual images in KubeSpawner.profile_list
   cpu:
-    limit: 2
+    limit: 1
     guarantee: 0.1
   memory:
-    limit: 2G
+    limit: 1G
     guarantee: 512M
   storage:
     type: NONE
