@@ -188,7 +188,8 @@ releases:
     app: jupyterhub
     group: jupyterhub
   chart: jupyterhub/jupyterhub
-  version: v0.7-5bd0b65
+  # Wed, 16 Jan 2019 12:42:08 +0000
+  version: 0.8-a78b3d6
   values:
   - jupyterhub-internal/zero-to-jupyterhub-config.yml
   - ../config/jupyterhub-internal/zero-to-jupyterhub-secret.yml
