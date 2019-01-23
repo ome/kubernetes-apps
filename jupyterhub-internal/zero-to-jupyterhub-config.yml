@@ -3,6 +3,9 @@ hub:
   baseUrl: /jupyterhub-internal/
   db:
     type: sqlite-memory
+  service:
+    annotations:
+      prometheus.io/path: /jupyterhub-internal/hub/metrics
 #  extraConfig:
 
 debug:
