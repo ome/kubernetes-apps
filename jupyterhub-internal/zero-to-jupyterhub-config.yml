@@ -3,62 +3,7 @@ hub:
   baseUrl: /jupyterhub-internal/
   db:
     type: sqlite-memory
-  extraConfig: |
-    c.KubeSpawner.profile_list = [
-      {
-        'display_name': 'snoopycrimecop/jupyter-docker:master_merge_daily',
-        'kubespawner_override': {
-          'singleuser_image_spec':
-            'snoopycrimecop/jupyter-docker:master_merge_daily',
-        }
-      }, {
-        'display_name': 'snoopycrimecop/idr-notebooks:master_merge_daily',
-        'kubespawner_override': {
-          'singleuser_image_spec':
-            'snoopycrimecop/idr-notebooks:master_merge_daily',
-        }
-      }, {
-        'display_name': 'snoopycrimecop/idr-notebooks:itr_merge_daily',
-        'kubespawner_override': {
-          'singleuser_image_spec':
-            'snoopycrimecop/idr-notebooks:itr_merge_daily',
-          'cpu_limit': 2,
-          'mem_limit': '6.5G',
-        }
-      }, {
-        'display_name': 'imagedata/idr-notebooks:latest',
-        'kubespawner_override': {
-          'singleuser_image_spec':
-            'imagedata/idr-notebooks:latest',
-        }
-      }, {
-        'display_name': 'imagedata/idr-notebooks:VAE-0.5.2',
-        'kubespawner_override': {
-          'singleuser_image_spec':
-            'imagedata/idr-notebooks:VAE-0.5.2',
-        }
-      }, {
-        'display_name': 'snoopycrimecop/training-notebooks:master_merge_daily',
-        'kubespawner_override': {
-          'singleuser_image_spec':
-            'snoopycrimecop/training-notebooks:master_merge_daily',
-        }
-      }, {
-        'display_name': 'openmicroscopy/training-notebooks:latest',
-        'kubespawner_override': {
-          'singleuser_image_spec':
-            'openmicroscopy/training-notebooks:latest',
-        }
-      }, {
-        'display_name': 'openmicroscopy/training-notebooks:0.3.0',
-        'kubespawner_override': {
-          'singleuser_image_spec':
-            'openmicroscopy/training-notebooks:0.3.0',
-        }
-      }
-    ]
-
-
+#  extraConfig:
 
 debug:
   enabled: true
@@ -72,8 +17,8 @@ proxy:
 
 singleuser:
   image:
-    name: snoopycrimecop/idr-notebooks
-    tag: master_merge_trigger
+    name: imagedata/idr-notebooks
+    tag: latest
     pullPolicy: Always
   startTimeout: 1800
   # Set relatively low defaults for CPU and memory
@@ -95,6 +40,42 @@ singleuser:
       mountPath: /home/jovyan/shared
       subPath: shared
   cmd: jupyter-labhub
+  profileList:
+  - display_name: 'snoopycrimecop/jupyter-docker:master_merge_daily'
+    kubespawner_override:
+      singleuser_image_spec: 'snoopycrimecop/jupyter-docker:master_merge_daily'
+
+  - display_name: 'snoopycrimecop/idr-notebooks:master_merge_daily'
+    kubespawner_override:
+      singleuser_image_spec: 'snoopycrimecop/idr-notebooks:master_merge_daily'
+
+  - display_name: 'snoopycrimecop/idr-notebooks:itr_merge_daily'
+    description: itr_merge_daily with 2 cpu 6.5 GB memory
+    kubespawner_override:
+      singleuser_image_spec: 'snoopycrimecop/idr-notebooks:itr_merge_daily'
+      cpu_limit: 2
+      mem_limit: '6.5G'
+
+  - display_name: 'imagedata/idr-notebooks:latest'
+    kubespawner_override:
+      singleuser_image_spec: 'imagedata/idr-notebooks:latest'
+
+  - display_name: 'imagedata/idr-notebooks:VAE-0.5.2'
+    kubespawner_override:
+      singleuser_image_spec: 'imagedata/idr-notebooks:VAE-0.5.2'
+
+  - display_name: 'snoopycrimecop/training-notebooks:master_merge_daily'
+    kubespawner_override:
+      singleuser_image_spec: 'snoopycrimecop/training-notebooks:master_merge_daily'
+
+  - display_name: 'openmicroscopy/training-notebooks:latest'
+    kubespawner_override:
+      singleuser_image_spec: 'openmicroscopy/training-notebooks:latest'
+
+  - display_name: 'openmicroscopy/training-notebooks:0.3.0'
+    kubespawner_override:
+      singleuser_image_spec: 'openmicroscopy/training-notebooks:0.3.0'
+
   extraEnv:
     IDR_HOST: idr.openmicroscopy.org
     IDR_USER: public

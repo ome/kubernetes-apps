@@ -188,32 +188,11 @@ releases:
     app: jupyterhub
     group: jupyterhub
   chart: jupyterhub/jupyterhub
-  version: v0.7-5bd0b65
+  # Wed, 23 Jan 2019 15:37:58 +0000
+  version: 0.8-d470e4f
   values:
   - jupyterhub-internal/zero-to-jupyterhub-config.yml
   - ../config/jupyterhub-internal/zero-to-jupyterhub-secret.yml
-
-- name: jupyter-itr
-  namespace: jupyter-itr
-  labels:
-    app: jupyterhub
-    group: jupyterhub
-  chart: jupyterhub/jupyterhub
-  version: v0.7-15e87d6
-  values:
-  - jupyterhub-itr/zero-to-jupyterhub-config.yml
-  - ../config/jupyterhub-itr/zero-to-jupyterhub-secret.yml
-
-- name: jupyter-train
-  namespace: jupyter-train
-  labels:
-    app: jupyterhub
-    group: jupyterhub
-  chart: jupyterhub/jupyterhub
-  version: v0.7-d617e0a
-  values:
-  - jupyterhub-training/zero-to-jupyterhub-config.yml
-  - ../config/jupyterhub-training/zero-to-jupyterhub-secret.yml
 
 
 ## Object store
