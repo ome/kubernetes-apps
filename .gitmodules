@@ -1,9 +1,9 @@
 [submodule "idr-redmine-tracker"]
 	path = idr-redmine-tracker
-	url = https://github.com/openmicroscopy/idr-redmine-tracker.git
+	url = https://github.com/ome/idr-redmine-tracker
 [submodule "apacheds"]
 	path = apacheds
-	url = https://github.com/openmicroscopy/apacheds-k8s-app.git
+	url = https://github.com/ome/apacheds-k8s-app.git
 [submodule "charts/minio"]
 	path = charts/minio
-	url = https://github.com/openmicroscopy/minio-helm-chart.git
+	url = https://github.com/ome/minio-helm-chart.git
