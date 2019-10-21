@@ -14,4 +14,4 @@ controller:
 # Optionally specify SSL certificate
 # https://github.com/kubernetes/charts/issues/1495#issuecomment-342275665
   extraArgs:
-    default-ssl-certificate: kube-system/star-openmicroscopy-org-20181009
+    default-ssl-certificate: kube-system/star-openmicroscopy-org-20190911
