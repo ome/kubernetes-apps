@@ -10,6 +10,9 @@ nasgateway:
   enabled: true
   replicas: 1
 
+# Addition of minio-dev.openmicroscopy.org allows this to be proxied through
+# web-proxy with a custom restricted configuration allowing access to limited
+# buckets.
 ingress:
   enabled: true
   annotations:
@@ -19,10 +22,9 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
   hosts:
   - minio.openmicroscopy.org
+  - minio-dev.openmicroscopy.org
   tls:
   - hosts:
     - minio.openmicroscopy.org
+    - minio-dev.openmicroscopy.org
   path: /
-
-debug:
-  http: /export/minio-http-trace.log
